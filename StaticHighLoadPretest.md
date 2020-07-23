@@ -129,7 +129,7 @@ Requests/sec:  11131.57
 Transfer/sec:      5.10MB
 ```
 
-## 1. Quart без логов, без reload и с uvloop
+## 6. Quart без логов, без reload и с uvloop
 ```
 python3 01quart_maxtune_static.py
 ```
