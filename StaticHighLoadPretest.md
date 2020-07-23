@@ -159,9 +159,13 @@ Transfer/sec:    237.34KB
 ```
 
 # Вывод
-- Quart+uvloop 1724 RPS
-- aiohttp web + uvloop 6178 RPS
-- nginx static 11131 RPS
+
+| Технология | RPS (wrk) |
+| ------ | ------ |
+| Quart+uvloop | 1724 |
+| aiohttp web + uvloop | 6178 |
+| nginx static | 11131 |
+
 # Ограничения сравнения
 - без https
 - без pgsql
