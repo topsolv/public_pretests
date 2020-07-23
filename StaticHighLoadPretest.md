@@ -18,7 +18,6 @@ if __name__ == '__main__':
 ##### Производительность 870 RPS 
 ```sh
 wrk -t30 -c300 -d5s http://rec.local:5001/
-  4429 requests in 5.10s, 610.52KB read
 Requests/sec:    868.51
 Transfer/sec:    119.72KB
 ```
@@ -41,7 +40,7 @@ if __name__ == '__main__':
 
 ##### Производительность 1270 RPS 
 ```sh
-Тест wrk -t30 -c300 -d5s http://rec.local:5001/
+wrk -t30 -c300 -d5s http://rec.local:5001/
   6478 requests in 5.10s, 0.87MB read
 Requests/sec:   1270.17
 Transfer/sec:    174.90KB
