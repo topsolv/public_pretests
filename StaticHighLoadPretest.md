@@ -129,4 +129,44 @@ Requests/sec:  11131.57
 Transfer/sec:      5.10MB
 ```
 
+## 1. Quart без логов, без reload и с uvloop
+```
+python3 01quart_maxtune_static.py
+```
+```python
+from quart import Quart
+import logging
+import asyncio
+import uvloop
+
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+app = Quart(__name__)
+
+@app.route('/')
+async def hello():
+    return 'Hello'
+
+if __name__ == '__main__':
+    logging.getLogger('quart.serving').setLevel(logging.ERROR)
+    app.run(host="0.0.0.0", port=5010,debug=False,use_reloader=False)
+```
+##### Производительность 1724 RPS 
+```
+wrk -t30 -c300 -d5s http://rec.local:5010/
+  8791 requests in 5.10s, 1.18MB read
+Requests/sec:   1723.64
+Transfer/sec:    237.34KB
+```
+
+# Вывод
+Quart+uvloop 1724 RPS
+aiohttp web + uvloop 6178 RPS
+nginx static 11131 RPS
+# Ограничения сравнения
+- без https
+- без pgsql
+- без auth
+- без полезной нагрузки
+- локально, а не на VPS на сервере
+
 
